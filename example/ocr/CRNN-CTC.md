@@ -18,15 +18,15 @@ git clone https://github.com/PaddlePaddle/PaddleOCR.git
 
 ### 1.3 运行训练
 
-使用飞浆 PaddleOCR 套件运行 MLU，可以通过设置 Global.device 参数为 mlu 来指定设备。
+使用飞浆 PaddleOCR 套件运行 MLU，可以通过设置 use_mlu 参数为 mlu 来指定设备。
 ```bash
 export MLU_VISIBLE_DEVICES=0,1,2,3
 cd PaddleOCR/
 python -m paddle.distributed.launch --mlus '0,1,2,3' tools/train.py \
           -c configs/rec/rec_icdar15_train.yml \
-          -o Global.device=mlu 
+          -o use_mlu=True use_gpu=False
 ```
-## 2.SSD 精度
+## 2.CRNN-CTC 精度
 | Model | dataset |ACC FP32| ACC AMP |
 | ------------- |------------- |------------- | ------------- | 
 | CRNN-CTC  | ICDAR2015 | 94.8% | 94.8% | 
